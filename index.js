@@ -1,9 +1,29 @@
-const express = require ('express')
-const app = express()
+const express = require ('express') // importa a biblioteca
+const app = express() 
 const port = 3000
 
-app.get('/', (req,res) => {
-    res.send('Hello World!')
+const books = [
+    {
+        "id": 1,
+        "name": "O Alquimista",
+        "author": "Paulo Coelho",
+        "year": 1988,
+        "genre": "Romance",
+        "pages": 181
+     },
+
+     {
+        "id": 2,
+        "name": "Hobbit",
+        "author": "J. R. R. Tolkien",
+        "year": 1937,
+        "genre": "Fantasia",
+        "pages": 350
+     }
+    ]
+
+app.get('/books', (req,res) => {
+    res.json(books)
 })
 
 app.get('/nome/:name', (req, res) => {

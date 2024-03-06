@@ -26,11 +26,20 @@ app.get('/books', (req,res) => {
     res.json(books)
 })
 
-app.get('/nome/:name', (req, res) => {
-    return res.send (`Bem-vindo, ${req.params.name} ${req.query.sobrenome}`)
+app.get('/book/:id', (req, res) => {
+    return res.json(getBookById(req.params.id, books)) //vai retornar  a função getBookById
 })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+//função para pegar o elemento pelo id
+function getBookById(id, books) {
+    for(let i = 0; i < books.length; i++) { // i < books.length: passa por cada objeto do array
+        if(books[i].id == id){ //se houver o id ele vai retornar o objeto referente ao id
+            return books[i] 
+        }       
+    }
+}
 
